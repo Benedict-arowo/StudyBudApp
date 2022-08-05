@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Hello</h2>
+    <p>Currently logged in as {{request.user}}</p>
+    <a href="{% url 'logout' %}">Logout</a>
+    <hr>
+
+    <div class="topics">
+        {% for topic in topics %}
+            <a href="{% url 'index' %}?q={{topic}}">{{topic}} - FOLLOW</a>
+        {% endfor %}
+    </div>
+    <ul>
+        {% for room in rooms %}
+            <li><a href="{% url 'room' room.id %}">{{room.name}} | {{room.host}}</a></li>
+            <li><a href="{% url 'delete-room' room.id %}">Delete</a> | <a href="{% url 'edit-room' room.id %}">Edit</a></li>
+            <hr>
+        {% endfor %}
+    </ul>
+{% endblock%}
