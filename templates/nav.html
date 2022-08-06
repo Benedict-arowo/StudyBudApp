@@ -1,0 +1,30 @@
+<nav>
+    <style>
+        .mainUl {
+            display: flex;
+            list-style-type: none;
+            gap: 16px;
+        }
+        .navContainer {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 16px;
+        }
+    </style>
+    <div class="navContainer">
+        <ul class="mainUl">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'create-room' %}">Create Room</a></li>
+            {% endif %}
+        </ul>
+        <ul class="mainUl">
+            {% if user.is_authenticated %}
+                <li>Currently logged in as <strong>{{request.user}}</strong></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

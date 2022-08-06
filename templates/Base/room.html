@@ -1,6 +1,40 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+<style>
+    .messageContent {
+        display: flex;
+        flex-direction: column;
+        /* gap: 2px; */
+    }
+
+    p {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    form {
+        margin: 16px 8px;
+    }
+</style>
     <h2>{{room.name}}</h2>
     <small>{{room.description}}</small>
+
+    <hr>
+    <h4 style="margin-bottom: 0;">Comments</h4>
+    {% if request.user.is_authenticated %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="messageBody" placeholder="Add a new comment" id="">
+        </form>
+    {% endif %}
+        <hr>
+<div id="messagesWrapper">
+    {% for roomMessage in roomMessages %}
+        <div class="messageContent">
+            <p>{{roomMessage.user}} commented {{roomMessage.created|timesince}} ago</p>
+            <p>> {{roomMessage}}</p>
+        </div>
+    {% endfor %}
+</div>
 {% endblock%}

@@ -14,8 +14,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    <a href="{% url 'create-room' %}">Create room</a>
-    <p><a href="{% url 'index' %}">Home</a></p>
+    {% include 'nav.html' %}
     {% block content %}
     {% endblock %}
 </body>

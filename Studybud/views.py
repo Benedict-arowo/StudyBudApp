@@ -5,6 +5,7 @@ from .forms import *
 from django.contrib import messages
 from .models import *
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
@@ -12,7 +13,7 @@ def index(request):
     if not q:
         q = ''
     topics = Topic.objects.all()
-    rooms = Room.objects.filter(name__icontains='')
+    rooms = Room.objects.filter(Q(name__icontains=q) | Q(topic__name__icontains=q) | Q(host__username__icontains=q))
     context = {
         'rooms': rooms,
         'topics': topics,
@@ -21,8 +22,18 @@ def index(request):
 
 def room(request, id):
     currentRoom = Room.objects.get(id=id)
+    messages = Messages.objects.filter(room=currentRoom).order_by('-created')
+
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return redirect('room', currentRoom.id)
+
+        message = request.POST.get('messageBody')
+        newMessage = Messages.objects.create(user=request.user, room=currentRoom, message=message)
+        return redirect('room', currentRoom.id)
     context = {
         'room': currentRoom,
+        'roomMessages': messages,
     }
     return render(request, 'Base/room.html', context)
 
@@ -111,7 +122,6 @@ def registerPage(request):
 
     if request.method == 'POST':
         form = RegisterForm(request.POST)
-        print(form.is_valid())
         if form.is_valid():
             user = form.save(commit=False)
             user.email = user.email.lower()
