@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '192.168.100.11',
-    'studygyaantesting.herokuapp.com',
+    'studyappdjango.herokuapp.com',
 ]
 
 
