@@ -103,7 +103,7 @@ def loginPage(request):
             return redirect('index')
         else:
             messages.error(request, 'Incorrect password!')
-            return redirect('index')
+            return redirect('login')
 
     context = {
         'form': form

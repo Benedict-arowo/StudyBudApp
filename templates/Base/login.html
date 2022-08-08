@@ -1,10 +1,38 @@
 {% extends 'layout.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}">
+{% endblock %}
 
 {% block content %}
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Submit</button>
-        <a href="{% url 'register' %}">Register?</a>
-    </form>
+    <main>
+        <div id="loginContainer">
+            <div class="heading">
+                <h1>Login</h1>
+            </div>
+            <div class="content">
+                <form id="loginForm" action="" method="post">
+                {% csrf_token %}
+                    <div class="fields">
+                        <label for="email">Email:</label>
+                        {{form.email}}
+                        <!-- <input type="text" name="email" placeholder="eg: johndoe@gmail.com"> -->
+                    </div>
+                    <div class="fields">
+                        <label for="Password">Password:</label>
+                        {{form.password}}
+                        <!-- <input type="password" name="password" placeholder="••••••••" id=""> -->
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <div class="registerPrompt">
+                    <p>Haven't signed up yet?</p>
+                    <button id="registerBtn">Register</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="{% static 'javascript/login.js' %}"></script>
 {% endblock%}

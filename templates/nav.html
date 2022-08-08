@@ -1,30 +1,35 @@
-<nav>
-    <style>
-        .mainUl {
-            display: flex;
-            list-style-type: none;
-            gap: 16px;
-        }
-        .navContainer {
-            display: flex;
-            justify-content: space-between;
-            padding: 4px 16px;
-        }
-    </style>
-    <div class="navContainer">
-        <ul class="mainUl">
-            <li><a href="{% url 'index' %}">Home</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'create-room' %}">Create Room</a></li>
-            {% endif %}
-        </ul>
-        <ul class="mainUl">
-            {% if user.is_authenticated %}
-                <li>Currently logged in as <strong>{{request.user}}</strong></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+{% load static %}
+<!-- start of navigation bar -->
+    <nav>
+        <a id="logo" href="{% url 'index' %}"">StudyBud</a>
+        <form id="search" action="" method="get">
+            <input type="text" name="Search" placeholder="Search..." id="searchInput">
+        </form>
+        <div id="user">
+
+            <!-- if user is not logged in -->
+            {% if not request.user.is_authenticated %}
+            <div class="userProfile">
+                <div class="avatarContainer">
+                    <img src="{% static 'images/avatar.png' %}" alt="user avatar" id="userAvatar" />
+                </div>
+                <a href="{% url 'login' %}">Login</a>
+            </div>
+            <!-- end of if user is not logged in -->
             {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
+            <!-- if user is logged in -->
+            <div class="userProfile">
+                <div class="avatarContainer">
+                    <img src="{% static 'images/avatar1.png' %}" alt="user avatar" id="userAvatar" />
+                </div>
+                <div class="userDetails">
+                    <a href="" class="username">Snowine</a>
+                    <span class="userTag">@snowine</span>
+                </div>
+            </div>
+            <img src="{% static 'images/drop-down.svg' %}" id="dropdown" alt="dropdown button">
+            <!-- end of logged in user -->
             {% endif %}
-        </ul>
-    </div>
-</nav>
+
+        </div>
+    </nav>

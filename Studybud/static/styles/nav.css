@@ -1,0 +1,90 @@
+nav {
+    display: flex;
+    background-color: var(--mainColor);
+    color: white;
+    padding: 8px 64px;
+    justify-content: space-between;
+    gap: 32px;
+    align-items: center;
+}
+
+#search {
+    flex-basis: 500px;
+}
+
+#searchInput {
+    outline: none;
+    padding: 12px 16px;
+    border-radius: 50px;
+    width: 100%;
+    border: none;
+    transition: outline 3s;
+}
+
+#searchInput:focus {
+    outline: var(--tertiaryColor) solid 3px;
+}
+
+#user {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+#user a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+}
+
+#user img[id='dropdown'] {
+    width: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#user img[id='dropdown']:hover {
+    transform: scale(1.1);
+}
+
+#userAvatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+.avatarContainer {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+}
+
+#logo {
+    font-family: 'Mouse Memoirs', sans-serif;
+    font-size: 48px;
+    text-decoration: none;
+    color: white;
+}
+
+.userProfile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.username {
+    font-weight: 400;
+}
+
+.userTag {
+    font-weight: 300;
+    cursor: default;
+}
+
+.userDetails {
+    display: flex;
+    flex-direction: column;
+}
+

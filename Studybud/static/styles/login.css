@@ -1,0 +1,123 @@
+main {
+    display: grid;
+    place-items: center;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh !important;
+}
+
+#loginContainer {
+    background-color: var(--mainColor);
+    width: 500px;
+    height: 500px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    overflow: hidden;
+}
+
+.heading {
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: var(--tertiaryColor);
+    height: 92px;
+    padding: 8px 0;
+    display: grid;
+    place-items: center;
+}
+
+.heading h1 {
+    font-weight: 600;
+    font-size: 2.25rem;
+}
+
+.fields {
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+}
+
+.fields > label {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.fields > input {
+    width: 250px;
+    padding: 12px 16px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    color: #889FB4;
+    background-color: var(--tertiaryColor);
+    font-weight: 300;
+}
+
+.fields > input::placeholder {
+    color: #889FB4;
+}
+
+#loginForm > button, .registerPrompt > button {
+    width: max-content;
+    padding: 8px 32px;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background-color: var(--tertiaryColor);
+    border: none;
+    margin-top: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.1s, transform 0.3s;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.registerPrompt {
+    margin-top: 16px;
+    text-align: center;
+    color: #889FB4;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+
+.registerPrompt > p {
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+.registerPrompt > button {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+    color: #889FB4;
+    font-weight: 500;
+    transition: background-color 0.1s, transform 0.3s;
+    margin: 0;
+}
+
+.registerPrompt > button:hover, #loginForm > button:hover {
+    transform: scale(1.05);
+}
+
+.registerPrompt > button:active, #loginForm > button:active {
+    background-color: #2c3b49;
+}
+
+
