@@ -55,6 +55,13 @@
         {% if request.user.is_authenticated %}
         <a href="{% url 'logout' %}" style="color: yellow;">Logout</a>
         {% endif %}
+        <p>{{roomCount}} 
+            {% if roomCount > 1 %}
+            rooms
+            {% else %}
+            room
+            {% endif %}
+        </p>
         {% for room in rooms %}
             <div class="roomWrapper">
                 <a href="{% url 'room' room.id %}">{{room.name}}, by {{room.host}}</a>

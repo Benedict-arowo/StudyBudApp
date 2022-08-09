@@ -14,9 +14,11 @@ def index(request):
         q = ''
     topics = Topic.objects.all()
     rooms = Room.objects.filter(Q(name__icontains=q) | Q(topic__name__icontains=q) | Q(host__username__icontains=q))
+    roomCount = rooms.count()
     context = {
         'rooms': rooms,
         'topics': topics,
+        'roomCount': roomCount,
     }
     return render(request, 'Base/index.html', context)
 
@@ -63,7 +65,7 @@ def deleteRoom(request, id):
         return redirect('index')
 
     context = {
-        'room': room,
+        'obj': room,
     }
     return render(request, 'Base/delete.html', context)
 

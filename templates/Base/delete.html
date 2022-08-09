@@ -1,10 +1,22 @@
 {% extends 'layout.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'styles/delete.css' %}">
+{% endblock %}
 
 {% block content %}
-    <form action="" method="post">
-        {% csrf_token %}
-        <p>Are you sure you want to delete {{room.name}}?</p>
-        <a href="{{request.META.HTTP_REFERER}}"></a>
-        <button type="submit">Delete</button>
-    </form>
-{% endblock%}
+
+    <main>
+        <form method="post" class="container">
+            {% csrf_token %}
+            <div class="prompt">
+                <h1>Are you sure you want to delete "<span>{{obj}}</span>"?</h1>
+            </div>
+            <div class="btns">
+                <button><a href="{{request.META.HTTP_REFERER}}">Go Back</a></button>
+                <button type="submit">Delete</button>
+            </div>
+        <form/>
+    </main>
+    {% endblock %}

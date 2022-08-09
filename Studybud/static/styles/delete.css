@@ -1,0 +1,71 @@
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+main {
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    border-radius: 20px;
+    box-shadow: 0 0 12px 1px rgba(0, 0, 0, .5);
+    width: 1000px;
+    height: 512px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--mainColor);
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    padding: 0 32px;
+}
+
+.prompt {
+    max-width: 1000px;
+}
+
+.prompt > h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    max-width: 451px;
+    color: white;
+    text-align: center;
+}
+
+.prompt > h1 > span {
+    font-weight: 300;
+}
+
+button {
+    padding: 16px 48px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .5);
+    color: white;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    background-color: var(--tertiaryColor);
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+button > a {
+    color: white;
+    text-decoration: none;
+}
+
+.btns {
+    display: flex;
+    gap: 64px;
+    flex-wrap: wrap;
+}
+
+.btns > button:nth-child(2) {
+    background-color: var(--mainColor);
+}
