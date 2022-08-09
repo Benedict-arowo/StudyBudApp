@@ -23,8 +23,8 @@
                     <img src="{% static 'images/avatar1.png' %}" alt="user avatar" id="userAvatar" />
                 </div>
                 <div class="userDetails">
-                    <a href="" class="username">Snowine</a>
-                    <span class="userTag">@snowine</span>
+                    <a href="" class="username">{{request.user.first_name}}</a>
+                    <span class="userTag">@{{request.user.username}}</span>
                 </div>
             </div>
             <img src="{% static 'images/drop-down.svg' %}" id="dropdown" alt="dropdown button">

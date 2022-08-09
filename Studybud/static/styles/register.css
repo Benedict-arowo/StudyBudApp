@@ -1,0 +1,131 @@
+main {
+    display: grid;
+    place-items: center;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh !important;
+}
+
+#registerContainer {
+    background-color: var(--mainColor);
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    max-height: 650px;
+    padding: 0 0 32px 0;
+    /* align-items: center;
+    justify-content: center; */
+    border-radius: 30px;
+    overflow: hidden;
+    gap: 48px;
+}
+
+.heading{
+    text-align: center;
+    color: white;
+    background-color: var(--tertiaryColor);
+    height: 92px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+}
+
+.heading h1{
+    font-weight: 600;
+    font-size: 2.25rem;
+}
+
+.registerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.fields{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.fields > label{
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.fields > input{
+    width: 250px;
+    /* height: 30px; */
+    padding: 12px 16px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: var(--tertiaryColor);
+    font-size: 16px;
+    font-weight: 300;
+    color: white;
+}
+
+.fields > input::placeholder {
+    color: #889FB4;
+}
+
+
+.btn > button, .loginPrompt > button {
+    width: max-content;
+    color: white;
+    background-color: var(--tertiaryColor);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 8px;
+    padding: 15px 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.loginPrompt{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+    text-align: center;
+    color: #889FB4;
+}
+
+.loginPrompt > p {
+    font-size: 16px;
+    /* color: var(--tertiaryColor); */
+    font-weight: 300;
+}
+
+.loginPrompt > button {
+    font-size: 15px;
+    padding: 8px 16px;
+}
+
+.formContent {
+    display: flex;
+    gap: 25px;
+}
+
+.content-1, .content-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn > button:hover, .loginPrompt > button:hover{
+    transform: scale(1.05);
+} 
+
+.btn > button:active, .loginPrompt > button:active{
+    background-color: #2c3b49;
+}

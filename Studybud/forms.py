@@ -14,6 +14,9 @@ class RegisterForm(forms.ModelForm):
     class Meta():
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'placeholder': 'Eg: Joe'})
+        }
 
 class RoomForm(forms.ModelForm):
     class Meta():
