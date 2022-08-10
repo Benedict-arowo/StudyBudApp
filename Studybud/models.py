@@ -32,7 +32,7 @@ class Room(models.Model):
         ordering = ['created', 'updated']
     
     def __str__(self):
-        return self.name
+        return self.description[0:100]
 
 class Topic(models.Model):
     name = models.CharField(max_length=100)

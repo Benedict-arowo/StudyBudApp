@@ -18,6 +18,7 @@ nav {
     border-radius: 50px;
     width: 100%;
     border: none;
+    background-color: var(--tertiaryColor);
     transition: outline 3s;
 }
 

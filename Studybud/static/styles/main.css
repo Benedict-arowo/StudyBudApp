@@ -1,0 +1,317 @@
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    height: 100vh;
+    overflow: hidden;
+    padding-bottom: 16px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 0 64px;
+    height: 100%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+#topicsSection, #roomsSection, #activitySection {
+    background-color: var(--tertiaryColor);
+    border-radius: 30px;
+    padding: 16px 0;
+    flex-basis: 300px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    max-height: 75%;
+    gap: 32px;
+    max-width: 300px;
+    overflow-y: scroll;
+}
+
+#topicsSection {
+    overflow: hidden;
+}
+
+#roomsSection {
+    overflow-y: scroll;
+    max-width: none;
+    flex: 3;
+    max-height: 90%;
+    padding: 16px 32px;
+    background-color: var(--bgColor);
+    position: relative;
+}
+
+#roomsSection::-webkit-scrollbar, #activitySection::-webkit-scrollbar {
+    width: 4px;
+}
+
+#roomsSection::-webkit-scrollbar-track, #activitySection::-webkit-scrollbar  {
+    background-color: var(--tertiaryColor);
+}
+
+#roomsSection::-webkit-scrollbar-thumb, #activitySection::-webkit-scrollbar  {
+    background-color: rgb(41, 42, 53);
+}
+
+h3 {
+    color: white;
+    font-weight: 400;
+    text-align: center;
+}
+
+
+/* Topic section */
+
+#topics {
+    height: 100%;
+    padding: 0 32px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
+
+.topic {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topic > h4 {
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.topic > button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: var(--mainColor);
+    color: white;
+    border: none;
+    outline: none;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+.topic > button:hover {
+    transform: scale(1.05);
+}
+
+#allBtn:hover {
+    transform: none;
+    cursor: default;
+}
+
+/* Room Section  */
+
+#roomsSection > #heading {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: -20px;
+    background-color: var(--bgColor);
+    padding: 8px 16px;
+}
+
+#titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+}
+
+#titleContainer > p {
+    font-weight: 300;
+}
+
+#heading > button {
+    color: white;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    padding: 8px 32px;
+    font-weight: 600;
+    background-color: var(--mainColor);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+#heading > button:hover {
+    transform: scale(1.09);
+}
+
+#roomsSection > .container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#roomsSection > .container > .room {
+    background-color: var(--tertiaryColor);
+    border-radius: 30px;
+    height: 150px;
+    padding: 8px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#roomsSection .roomHeading {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
+
+#roomsSection .roomHeading  p {
+    font-weight: 300;
+    font-size: .7rem;
+}
+
+#roomsSection .host, .post > .host {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+}
+
+#roomsSection .host > a , .post > .host > p{
+    font-size: .7rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 300;
+}
+
+#roomsSection .roomHeading img, .post > .host > img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.roomContent {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 39px;
+}
+
+.roomContent .roomTitle {
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.roomContent .roomDesc {
+    font-size: .8rem;
+    font-weight: 100;
+    width: 80%;
+    cursor: default;
+}
+
+.roomStats {
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+}
+
+.roomStats .joined {
+    font-size: .7rem;
+    display: flex;
+}
+
+.dotIcon {
+    width: 8px;
+    height: 8px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+.joinedStats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.roomTopic {
+    color: white;
+    font-size: .8rem;
+    padding: 8px 16px;
+    background-color: var(--mainColor);
+    border-radius: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+
+
+
+/* Actvity section */
+
+#activitySection > h3 {
+    position: sticky;
+    top: -20px;
+    padding: 4px;
+    background-color: var(--tertiaryColor);
+}
+.activityContent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 16px;
+}
+
+.activityContent > .post {
+    background-color: var(--mainColor);
+    padding: 16px;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: default;
+}
+
+.post > .content {
+    width: 100%;
+    border-radius: 15px;
+    background-color: var(--secondaryColor);
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.post > .content > p {
+    font-size: .7rem;
+    padding-left: 12px;
+}
+  
+.userRepliedTo {
+    cursor: pointer;
+}
+
+.more {
+    width: 100%;
+
+}
+
+#moreBtn {
+    color: white;
+    text-align: center;
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    cursor: pointer;
+}

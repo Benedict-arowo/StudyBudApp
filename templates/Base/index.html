@@ -1,80 +1,131 @@
 {% extends 'layout.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+{% endblock %}
 
 {% block content %}
+        <main>
+            <div id="topicsSection">
+                <h3>Browse Topics</h3>
 
-    <style>
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 3fr;
-            color: white;
-        }
+                <div id="topics">
 
-        .roomWrapper {
-            display: flex;
-            flex-direction: column;
-            max-width: 400px;
-            gap: 4px;
-            background-color: lightblue;
-            margin-top: 12px;
-            padding: 8px;
-        }
+                    
+                    <div class="topic">
+                        <a href="{% url 'index' %}" class="topicName">All</a>
+                        <button id="allBtn">705</button>
+                    </div>
 
-        .roomWrapper a {
-            color: brown;
-            text-decoration: none;
+                    {% for topic in topics %}
+                    <div class="topic">
+                        <a href="{% url 'index' %}?q={{topic}}">{{topic}}</a>
+                        <button class="topicBtn">Follow</button>
+                    </div>
+                    {% endfor %}
 
-        }
-
-        .btnWrapper {
-            display: flex;
-            justify-content: space-around;
-            padding: 8px;
-        }
-
-        .topicWrapper {
-            padding: 0 16px;
-            align-items: center;
-            gap: 64px;
-            display: flex;
-        }
-    </style>
-<div class="container">
-    <div class="topics">
-        <h2 style="text-align: center;">Topics</h2>
-        <a href="{% url 'index' %}" style="padding: 0 16px;">All</a>
-        {% for topic in topics %}
-        <div class="topicWrapper">
-            <a href="{% url 'index' %}?q={{topic}}">{{topic}}</a>
-            <p>Follow</p>
-        </div>
-        {% endfor %}
-    </div>
-
-    <div>
-        <h2 style="text-align: center;">Rooms</h2>
-        {% if request.user.is_authenticated %}
-        <a href="{% url 'logout' %}" style="color: yellow;">Logout</a>
-        {% endif %}
-        <p>{{roomCount}} 
-            {% if roomCount > 1 %}
-            rooms
-            {% else %}
-            room
-            {% endif %}
-        </p>
-        {% for room in rooms %}
-            <div class="roomWrapper">
-                <a href="{% url 'room' room.id %}">{{room.name}}, by {{room.host}}</a>
-                <div class="btnWrapper">
-                    {% if room.host == request.user %}
-                        <a href="{% url 'delete-room' room.id %}">Delete</a>
-                        <a href="{% url 'edit-room' room.id %}">Edit</a>
+                </div>
+                <div class="more">
+                    <h4 id="moreBtn">More</h4>
+                </div>
+            </div>
+            
+            <div id="roomsSection">
+                <div id="heading">
+                    <div id="titleContainer">
+                        <h3>Rooms</h3>
+                        <p>Currently displaying {{roomCount}} 
+                            {% if roomCount > 1 %}
+                            rooms
+                            {% else %}
+                            room
+                            {% endif %}</p>
+                    </div>
+                    {% if request.user.is_athenticated %}
+                    <button><a href="{% url 'create-room' %}">Create Room</a></button>
                     {% endif %}
                 </div>
-                <hr>
-            </div>
-        {% endfor %}
-    </div>
-</div>
+                <div class="container">
+                    {% for room in rooms %}
+                    <div class="room">
+                        <div class="roomHeading">
+                            <div class="host">
+                                <img src="{% static 'images/avatar1.png' %}" alt="Host profile picture">
+                                <a href="{% url 'index' %}"><strong>Host</strong> @{{room.host}}</a>
+                            </div>
+                            <p class="timePosted">{{room.updated|timesince}}</p>
+                        </div>
+                        <div class="roomContent">
+                            <a href="{% url 'room' room.id %}" class="roomTitle">{{room.name}}</a>
+                            <p class="roomDesc">
+                            {% if room.description|length > 100 %}
+                                {{room}}......
+                            {% else %}
+                                {{room.description}}
+                            {% endif %}
+                    </p>
+                            <div class="roomStats">
+                                <div class="joinedStats">
+                                    <div class="dotIcon"></div>
+                                    <p class="joined">{{participants|length}} joined</p>
+                                </div>
+                                <a style="color: white; text-decoration: none;" class="roomTopic" href="{% url 'index' %}?q={{room.topic}}">{{room.topic}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
 
-{% endblock%}
+                </div>
+            </div>
+
+            <div id="activitySection">
+                <h3>Activity</h3>
+                <div class="activityContent">
+                    <div class="post">
+                        <div class="host">
+                            <img src="{% static 'images/avatar1.png' %}" alt="Host profile picture">
+                            <p><strong>Host</strong> @Snowine</p>
+                        </div>
+                        <div class="content">
+                            <h6>Replied to <span class="userRepliedTo">@Density</span></h6>
+                            <p>Lorem ipsome and dem typa...</p>
+                        </div>
+                    </div>
+
+                    <div class="post">
+                        <div class="host">
+                            <img src="{% static 'images/avatar1.png' %}" alt="Host profile picture">
+                            <p><strong>Host</strong> @Snowine</p>
+                        </div>
+                        <div class="content">
+                            <h6>Replied to <span class="userRepliedTo">@Density</span></h6>
+                            <p>Lorem ipsome and dem typa...</p>
+                        </div>
+                    </div>
+
+                    <div class="post">
+                        <div class="host">
+                            <img src="{% static 'images/avatar1.png' %}" alt="Host profile picture">
+                            <p><strong>Host</strong> @Snowine</p>
+                        </div>
+                        <div class="content">
+                            <h6>Replied to <span class="userRepliedTo">@Density</span></h6>
+                            <p>Lorem ipsome and dem typa...</p>
+                        </div>
+                    </div>
+
+                    <div class="post">
+                        <div class="host">
+                            <img src="{% static 'images/avatar1.png' %}" alt="Host profile picture">
+                            <p><strong>Host</strong> @Snowine</p>
+                        </div>
+                        <div class="content">
+                            <h6>Replied to <span class="userRepliedTo">@Density</span></h6>
+                            <p>Lorem ipsome and dem typa...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+{% endblock %}
