@@ -43,7 +43,7 @@ a {
     overflow-y: scroll;
     max-width: none;
     flex: 3;
-    max-height: 90%;
+    max-height: 80%;
     padding: 16px 32px;
     background-color: var(--bgColor);
     position: relative;
