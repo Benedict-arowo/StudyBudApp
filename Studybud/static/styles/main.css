@@ -3,17 +3,16 @@ body {
     flex-direction: column;
     gap: 64px;
     height: 100vh;
-    overflow: hidden;
+    overflow: scroll;
     padding-bottom: 16px;
 }
 
 main {
     display: flex;
-    flex-wrap: wrap;
     gap: 16px;
     padding: 0 64px;
     height: 100%;
-    flex: 1;
+    justify-content: space-between;
 }
 
 a {
@@ -21,17 +20,67 @@ a {
     text-decoration: none;
 }
 
+
+@media (max-width: 1200px) {
+    body {
+        height: max-content !important;
+        overflow: scroll !important;
+    }
+
+    #topicsSection, #activitySection {
+        display: none !important;
+    }
+
+    #tabs {
+        display: flex !important;
+    }
+}
+
+
+@media (max-width: 620px) {
+    main {
+        padding: 0;
+    }
+
+    .room {
+        height: max-content !important;
+    }
+}
+
+#tabs {
+    width: 100%;
+    display: none;
+    justify-content: space-evenly;
+}
+
+#tabs a {
+    padding: 12px 32px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    background-color: var(--tertiaryColor);
+    transition: all 0.3s;
+}
+
+#tabs a:hover {
+    transform: scale(1.07);
+}
+
 #topicsSection, #roomsSection, #activitySection {
     background-color: var(--tertiaryColor);
     border-radius: 30px;
     padding: 16px 0;
-    flex-basis: 300px;
     display: flex;
+    flex: 1;
     flex-direction: column;
     height: 100%;
     gap: 32px;
-    max-width: 300px;
     overflow-y: scroll;
+}
+
+#topicsSection , #activitySection {
+    min-width: 300px;
+    max-height: 672px;
 }
 
 #topicsSection {
@@ -40,6 +89,8 @@ a {
 
 #roomsSection {
     overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-margin-bottom: 30px;
     flex: 3;
     padding: 16px 32px;
     background-color: var(--bgColor);

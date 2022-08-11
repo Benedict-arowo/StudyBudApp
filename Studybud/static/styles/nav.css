@@ -20,6 +20,7 @@ nav {
     border: none;
     background-color: var(--tertiaryColor);
     transition: outline 3s;
+    color: white;
 }
 
 #searchInput:focus {
