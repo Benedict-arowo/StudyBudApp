@@ -85,9 +85,10 @@ def editRoom(request, id):
             return redirect('room', newroom.id)
 
     context = {
-        'form': form
+        'form': form,
+        'room': room,
     }    
-    return render(request, 'Base/edit.html', context)
+    return render(request, 'Base/edit-room.html', context)
 
 def loginPage(request):
     form = LoginForm()

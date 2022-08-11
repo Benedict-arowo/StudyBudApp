@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'styles/edit-room.css' %}">
+{% endblock %}
+
+{% block content %}
+
+        <main>
+            <div class="container">
+                <div class="heading">
+                    <h3>Editing "{{room.name}}"</h3>
+                </div>
+                <div class="roomDesc">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div id="name">
+                            <label for="name">Name: </label>
+                            {{form.name}}
+                        </div>
+
+                        <div id="Topic">
+                            <label for="topic">Topic: </label>
+                            {{form.topic}}
+                        </div>
+
+                        <div id="desc">
+                            <label for="description">Description: </label>
+                            {{form.description}}
+                        </div>
+
+                        <button type="submit">Save</button>
+                    </form>
+
+                </div>
+            </div>
+        </main>
+{% endblock %}

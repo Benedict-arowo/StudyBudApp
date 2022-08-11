@@ -28,8 +28,7 @@ a {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 500px;
-    max-height: 75%;
+    height: 100%;
     gap: 32px;
     max-width: 300px;
     overflow-y: scroll;
@@ -41,12 +40,9 @@ a {
 
 #roomsSection {
     overflow-y: scroll;
-    max-width: none;
     flex: 3;
-    max-height: 90%;
     padding: 16px 32px;
     background-color: var(--bgColor);
-    position: relative;
 }
 
 #roomsSection::-webkit-scrollbar, #activitySection::-webkit-scrollbar {
