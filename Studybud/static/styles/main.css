@@ -3,7 +3,7 @@ body {
     flex-direction: column;
     gap: 64px;
     height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
     padding-bottom: 16px;
 }
 
