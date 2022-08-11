@@ -20,7 +20,7 @@
             <!-- if user is logged in -->
             <div class="userProfile">
                 <div class="avatarContainer">
-                    <img src="{% static 'images/avatar1.png' %}" alt="user avatar" id="userAvatar" />
+                    <img src="{{request.user.profile_picture.url}}" alt="user avatar" id="userAvatar" />
                 </div>
                 <div class="userDetails">
                     <a href="" class="username">{{request.user.first_name}}</a>

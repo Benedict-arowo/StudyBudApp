@@ -11,6 +11,7 @@ class User(AbstractUser):
     bio = models.TextField(max_length=255, blank=True)
     followers = models.IntegerField(default=0)
     following = models.IntegerField(default=0)
+    profile_picture = models.ImageField(default='avatar.png', blank=True, upload_to='profilePictures')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
