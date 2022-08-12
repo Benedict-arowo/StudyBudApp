@@ -3,13 +3,13 @@ nav {
     background-color: var(--mainColor);
     color: white;
     padding: 8px 64px;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 32px;
     align-items: center;
 }
 
 #search {
-    flex-basis: 500px;
+    flex-basis: 600px;
 }
 
 #searchInput {
@@ -27,6 +27,20 @@ nav {
     outline: var(--tertiaryColor) solid 3px;
 }
 
+@media (max-width: 900px) {
+
+}
+
+@media (max-width: 900px) {
+    #search {
+        display: none;
+    }
+
+    nav {
+        justify-content: space-between;
+        padding: 8px 24px !important;
+    }
+}
 #user {
     display: flex;
     align-items: center;

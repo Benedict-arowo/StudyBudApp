@@ -30,7 +30,15 @@ a {
     #topicsSection, #activitySection {
         display: none !important;
     }
+}
 
+@media (max-width: 900px) {
+    #searchMobile {
+        display: initial !important;
+    }
+}
+
+@media (max-width: 1200px) {
     #tabs {
         display: flex !important;
     }
@@ -45,6 +53,19 @@ a {
     .room {
         height: max-content !important;
     }
+}
+
+.mobileView {
+    display: flex !important;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+#searchMobile {
+    width: 100%;
+    max-width: 700px;
+    display: none;
 }
 
 #tabs {

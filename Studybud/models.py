@@ -9,8 +9,8 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=150)
     bio = models.TextField(max_length=255, blank=True)
-    followers = models.IntegerField(default=0)
-    following = models.IntegerField(default=0)
+    followers = models.ManyToManyField('User', related_name='Followers', blank=True)
+    following = models.ManyToManyField('User', related_name='Following', blank=True)
     profile_picture = models.ImageField(default='avatar.png', blank=True, upload_to='profilePictures')
 
     USERNAME_FIELD = 'email'

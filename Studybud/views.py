@@ -26,10 +26,16 @@ def index(request):
 
 def room(request, id):
     currentRoom = Room.objects.get(id=id)
-    messages = Messages.objects.filter(room=currentRoom).order_by('-created')
+    roomMessages = Messages.objects.filter(room=currentRoom).order_by('-created')
 
     if request.method == 'POST':
         if not request.user.is_authenticated:
+            return redirect('room', currentRoom.id)
+
+        roomParticipants = currentRoom.participants.all()
+
+        if not request.user in roomParticipants:
+            messages.error(request, 'You are not a participant of this room!')
             return redirect('room', currentRoom.id)
 
         message = request.POST.get('messageBody')
@@ -37,9 +43,32 @@ def room(request, id):
         return redirect('room', currentRoom.id)
     context = {
         'room': currentRoom,
-        'roomMessages': messages,
+        'roomMessages': roomMessages,
     }
     return render(request, 'Base/room.html', context)
+
+@login_required(login_url='login')
+def joinRoom(request, id):
+    currentRoom = Room.objects.get(id=id)
+
+    currentRoom.participants.add(request.user)
+    return redirect('room', currentRoom.id)
+
+@login_required(login_url='login') 
+def leaveRoom(request, id):
+    currentRoom = Room.objects.get(id=id)
+    roomParticipants = currentRoom.participants.all()
+
+    if currentRoom.host == request.user:
+        messages.error(request, "You are the owner of this room, you can't leave the room.")
+        return redirect('room', currentRoom.id)
+
+    if not request.user in roomParticipants:
+        messages.error(request, 'You are not a participant of this room!')
+        return redirect('room', currentRoom.id)
+
+    currentRoom.participants.remove(request.user)
+    return redirect('index')
 
 @login_required(login_url='login')
 def createRoom(request):
@@ -48,8 +77,10 @@ def createRoom(request):
         room = RoomForm(request.POST)
         if room.is_valid():
             form = room.save(commit=False)
+            print(form.participants)
             form.host = request.user
             form.save()
+            form.participants.add(request.user)
             return redirect('room', form.id)
     context = {
         'form': room,
