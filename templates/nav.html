@@ -32,4 +32,20 @@
             {% endif %}
 
         </div>
+        
+        <div class="dropDownMenu" id="dropDownMenu">
+            <div class="settings" id="settings">
+                <img src="{% static '/images/settings-icon.svg' %}" alt="settings icon">
+                <p>Settings</p>
+            </div>
+            <div class="logout" id="logout">
+                <img src="{% static '/images/logout-icon.svg' %}" alt="logout icon">
+                <p>Logout</p>
+            </div>
+        </div>
+        
     </nav>
+
+    {% if request.user.is_authenticated %}
+    <script src="{% static 'javascript/navDropDown.js' %}"></script>
+    {% endif %}

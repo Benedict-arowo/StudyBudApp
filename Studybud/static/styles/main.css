@@ -97,6 +97,7 @@ a {
     height: 100%;
     gap: 32px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #topicsSection , #activitySection {
@@ -261,6 +262,7 @@ h3 {
 #roomsSection .roomHeading img, .post > .host > img {
     width: 32px;
     height: 32px;
+    border: 2px solid rgb(0, 141, 141);
     border-radius: 50%;
     object-fit: cover;
 }
@@ -382,4 +384,21 @@ h3 {
     font-weight: 600 !important;
     text-transform: uppercase;
     cursor: pointer;
+}
+
+.hostProfile {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+}
+
+.host {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.host p {
+    font-size: .7rem;
 }

@@ -15,7 +15,7 @@
                     
                     <div class="topic">
                         <a href="{% url 'index' %}" class="topicName">All</a>
-                        <button id="allBtn">705</button>
+                        <button id="allBtn">{{roomCount}}</button>
                     </div>
 
                     {% for topic in topics %}
@@ -60,7 +60,7 @@
                     <div class="room">
                         <div class="roomHeading">
                             <div class="host">
-                                <img src="{% static 'images/avatar1.png' %}" alt="Host profile picture">
+                                <img src="{{room.host.profile_picture.url}}" alt="Host profile picture">
                                 <a href="{% url 'index' %}"><strong>Host</strong> @{{room.host}}</a>
                             </div>
                             <p class="timePosted">{{room.updated|timesince}}</p>
@@ -77,7 +77,7 @@
                             <div class="roomStats">
                                 <div class="joinedStats">
                                     <div class="dotIcon"></div>
-                                    <p class="joined">{{participants|length}} joined</p>
+                                    <p class="joined">{{room.participants.count}} joined</p>
                                 </div>
                                 <a style="color: white; text-decoration: none;" class="roomTopic" href="{% url 'index' %}?q={{room.topic}}">{{room.topic}}</a>
                             </div>
@@ -91,49 +91,19 @@
             <div id="activitySection">
                 <h3>Activity</h3>
                 <div class="activityContent">
+                    {% for post in activities %}
                     <div class="post">
                         <div class="host">
-                            <img src="{% static 'images/avatar1.png' %}" alt="Host profile picture">
-                            <p><strong>Host</strong> @Snowine</p>
+                            <img class="hostProfile" src="{{ post.user.profile_picture.url }}" alt="Host profile picture">
+                            <p><strong>Host</strong> @{{post.user}}</p>
                         </div>
                         <div class="content">
-                            <h6>Replied to <span class="userRepliedTo">@Density</span></h6>
-                            <p>Lorem ipsome and dem typa...</p>
+                            <h6>Replied to <a href="{% url 'room' post.room.id %}" class="userRepliedTo">{{post.room}}<a/></h6>
+                            <p>{{post.message}}</p>
                         </div>
                     </div>
+                    {% endfor %}
 
-                    <div class="post">
-                        <div class="host">
-                            <img src="{% static 'images/avatar1.png' %}" alt="Host profile picture">
-                            <p><strong>Host</strong> @Snowine</p>
-                        </div>
-                        <div class="content">
-                            <h6>Replied to <span class="userRepliedTo">@Density</span></h6>
-                            <p>Lorem ipsome and dem typa...</p>
-                        </div>
-                    </div>
-
-                    <div class="post">
-                        <div class="host">
-                            <img src="{% static 'images/avatar1.png' %}" alt="Host profile picture">
-                            <p><strong>Host</strong> @Snowine</p>
-                        </div>
-                        <div class="content">
-                            <h6>Replied to <span class="userRepliedTo">@Density</span></h6>
-                            <p>Lorem ipsome and dem typa...</p>
-                        </div>
-                    </div>
-
-                    <div class="post">
-                        <div class="host">
-                            <img src="{% static 'images/avatar1.png' %}" alt="Host profile picture">
-                            <p><strong>Host</strong> @Snowine</p>
-                        </div>
-                        <div class="content">
-                            <h6>Replied to <span class="userRepliedTo">@Density</span></h6>
-                            <p>Lorem ipsome and dem typa...</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </main>

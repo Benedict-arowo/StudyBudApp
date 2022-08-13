@@ -6,6 +6,7 @@ nav {
     justify-content: space-evenly;
     gap: 32px;
     align-items: center;
+    position: relative;
 }
 
 #search {
@@ -104,3 +105,48 @@ nav {
     flex-direction: column;
 }
 
+.dropDownMenu > div {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.dropDownMenu > div:hover {
+    transform: scale(1.1);
+}
+
+.dropDownMenu > div:hover > p {
+    font-size: 1rem;
+}
+
+.dropDownMenu {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+    right: 64px;
+    height: 120px;
+    align-items: center;
+    justify-content: space-evenly;
+    bottom: -100px;
+    width: 150px;
+    background-color: var(--tertiaryColor);
+    padding: 18px 32px;
+    border-radius: 30px;
+    box-shadow: 0 6px 10px 1px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.dropDownMenu p {
+    font-size: .8rem;
+}
+
+.dropDownMenu img {
+    width: 25px;
+}
+
+.active {
+    display: flex;
+}
