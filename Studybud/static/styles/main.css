@@ -116,11 +116,7 @@ main {
     width: 4px;
 }
 
-#roomsSection::-webkit-scrollbar-track, #activitySection::-webkit-scrollbar  {
-    background-color: var(--tertiaryColor);
-}
-
-#roomsSection::-webkit-scrollbar-thumb, #activitySection::-webkit-scrollbar  {
+#roomsSection::-webkit-scrollbar-thumb, #activitySection::-webkit-scrollbar-thumb  {
     background-color: rgb(41, 42, 53);
 }
 
