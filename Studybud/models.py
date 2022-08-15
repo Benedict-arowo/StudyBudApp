@@ -50,3 +50,6 @@ class Messages(models.Model):
 
     def __str__(self):
         return self.message[0:20]
+    
+    class Meta:
+        verbose_name_plural = 'Messages'

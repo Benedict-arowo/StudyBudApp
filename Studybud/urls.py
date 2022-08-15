@@ -15,6 +15,6 @@ urlpatterns = [
     path('edit-room/<str:id>', views.editRoom, name='edit-room'),
 
     path('join-room/<str:id>', views.joinRoom, name='join-room'),
-    path('leave-room/<str:id>', views.leaveRoom, name='leavew-room'),
+    path('leave-room/<str:id>', views.leaveRoom, name='leave-room'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

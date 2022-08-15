@@ -1,40 +1,98 @@
 {% extends 'layout.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'styles/roomPage.css' %}">
+{% endblock %}
 
 {% block content %}
-<style>
-    .messageContent {
-        display: flex;
-        flex-direction: column;
-        /* gap: 2px; */
-    }
+    <main>
+        <div class="container">
+            <div id="roomContainer">
+                <div class="userProfile-rm">
+                    <div id="profile">
+                        <div class="avatarContainer-rm">
+                            <img src="{{room.host.profile_picture.url}}" alt="user avatar" id="userAvatar-rm">
+                        </div>
+                        <div class="userDetails-rm">
+                            <a href="" class="username-rm">{{room.host.first_name}} {{room.host.last_name}}</a>
+                            <a href="{% url 'room' room.id %}" class="userTag-rm">@{{room.host.username}}</a>
+                        </div>
+                    </div>
+                    <div class="userStatus">
+                        {% if request.user == room.host %}
+                        <a href="{% url 'delete-room' room.id %}" id="deleteRoom" >Delete Room</a>
+                        <a href="{% url 'edit-room' room.id %}" id="editRoom">Edit Room</a>
+                        {% else %}
+                            {% if not userStatus %}
+                                <a href="{% url 'join-room' room.id %}" id="joinRoom">Join Room</a>
+                            {% else %}
+                                <a href="{% url 'leave-room' room.id %}" id='leaveRoom'>Leave Room</a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+    
+                <div id="content">
+                    <div id="content-1">
+                        <h1>{{room.name}}</h1>
+                        <p>{{room.description}}</p>
+                    </div>
+    
+                    <div id="conversationContainer">
+                        <h2>CONVERSATIONS</h2>
+                        <div class="conversations">
+                        {% for roomMessage in roomMessages %}
+                            <div class="messages">
+                                <div class="userProfile-ms">
+                                    <div class="userProfile">
+                                        <div class="avatarContainer-ms">
+                                            <img src="{{roomMessage.user.profile_picture.url}}" alt="user avatar" id="userAvatar-ms">
+                                        </div>
+                                        <div class="userDetails-ms">
+                                            <span class="username-ms">{{roomMessage.user}}</span>
+                                            <a class="userTag-ms">@{{roomMessage.user.username}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="time">
+                                        <p>{{roomMessage.created|date:'P'}}</p>
+                                    </div>
+                                </div>
+                                <p class="messageContent">{{roomMessage.message}}</p>
+                            </div>
+                        {% endfor %}
+                        
+                        <div id="newMessage">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="messageBody" id="newMessage" placeholder="New message here...">
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="participantContainer">
+                <h2>Participants</h2>
+                {% for user in participants %}
+                <div class="participants">
+                    <div class="data">
+                        <div class="userProfile-ms participantsOverride">
+                            <div class="avatarContainer-ms">
+                                <img src="{{user.profile_picture.url}}" alt="user avatar" id="userAvatar-ms">
+                            </div>
+                            <div class="userDetails-ms">
+                                <span class="username-ms">{{user.first_name}} {{user.last_name}}</span>
+                                <a href="{% url 'room' room.id %}" class="userTag-ms">@{{user.username}}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
 
-    p {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-    form {
-        margin: 16px 8px;
-    }
-</style>
-    <h2>{{room.name}}</h2>
-    <small>{{room.description}}</small>
-
-    <hr>
-    <h4 style="margin-bottom: 0;">Comments</h4>
-    {% if request.user.is_authenticated %}
-        <form action="" method="post">
-            {% csrf_token %}
-            <input type="text" name="messageBody" placeholder="Add a new comment" id="">
-        </form>
-    {% endif %}
-        <hr>
-<div id="messagesWrapper">
-    {% for roomMessage in roomMessages %}
-        <div class="messageContent">
-            <p>{{roomMessage.user}} commented {{roomMessage.created|timesince}} ago</p>
-            <p>> {{roomMessage}}</p>
+                    
+            </div>
         </div>
-    {% endfor %}
-</div>
-{% endblock%}
+    </main>
+
+{% endblock %}

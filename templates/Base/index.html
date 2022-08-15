@@ -98,8 +98,8 @@
                             <p><strong>Host</strong> @{{post.user}}</p>
                         </div>
                         <div class="content">
-                            <h6>Replied to <a href="{% url 'room' post.room.id %}" class="userRepliedTo">{{post.room}}<a/></h6>
-                            <p>{{post.message}}</p>
+                            <h6>Replied to <a href="{% url 'room' post.room.id %}" class="userRepliedTo">{{post.room.name}}<a/></h6>
+                            <p class="activityMessageContent">{{post.message}}</p>
                         </div>
                     </div>
                     {% endfor %}

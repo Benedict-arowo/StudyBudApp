@@ -27,12 +27,19 @@ def index(request):
 def room(request, id):
     currentRoom = Room.objects.get(id=id)
     roomMessages = Messages.objects.filter(room=currentRoom).order_by('-created')
+    roomParticipants = currentRoom.participants.all()
+    userStatus = None
+
+    try:
+        if request.user in roomParticipants:
+            userStatus = True
+    except:
+        userStatus = False
 
     if request.method == 'POST':
         if not request.user.is_authenticated:
             return redirect('room', currentRoom.id)
 
-        roomParticipants = currentRoom.participants.all()
 
         if not request.user in roomParticipants:
             messages.error(request, 'You are not a participant of this room!')
@@ -41,9 +48,12 @@ def room(request, id):
         message = request.POST.get('messageBody')
         newMessage = Messages.objects.create(user=request.user, room=currentRoom, message=message)
         return redirect('room', currentRoom.id)
+        
     context = {
         'room': currentRoom,
         'roomMessages': roomMessages,
+        'participants': roomParticipants,
+        'userStatus': userStatus,
     }
     return render(request, 'Base/room.html', context)
 

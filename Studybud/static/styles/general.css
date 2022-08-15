@@ -16,6 +16,38 @@ body {
     color: red;
 }
 
+
+a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+a:hover {
+    text-underline-offset: 3px;
+    text-decoration: underline;
+}
+
+.alerts {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 30;
+    display: grid;
+    place-items: center;
+    padding: 8px 0;
+}
+
+.alerts > li {
+    font-size: 1.3rem;
+    color: white;
+    font-weight: 600;
+    list-style-type: none;
+}
+
 :root {
     --mainColor: #0F2027;
     --bgColor: #1E272C;

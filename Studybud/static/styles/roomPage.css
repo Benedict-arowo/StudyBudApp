@@ -1,0 +1,283 @@
+main {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: 0 64px;
+}
+
+body {
+    display: flex;
+    gap: 64px;
+    flex-direction: column;
+    height: 100vh !important;
+}
+
+#roomContainer {
+    background-color: var(--tertiaryColor);
+    max-width: 1000px;
+    min-width: 700px;
+    flex: 3;
+    height: 800px;
+    border-radius: 30px;
+    padding: 20px 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+}
+
+#participantContainer {
+    background-color: var(--tertiaryColor);
+    flex: 1;
+    max-width: 400px;
+    min-width: 400px;
+    height: 800px;
+    border-radius: 30px;
+}
+
+.container {
+    display: flex;
+    gap: 32px;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+    padding-bottom: 32px;
+}
+
+#userAvatar-rm {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+.userProfile-rm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 8px;
+    align-self: flex-start;
+}
+
+#profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.avatarContainer-rm {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+}
+
+.username-rm {
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+}
+
+.userTag-rm {
+    font-weight: 300;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 70px;
+    gap: 20px;
+}
+
+#content-1 {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    gap: 6px;
+}
+
+#content-1>h1 {
+    color: white;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+#content-1>p {
+    color: rgb(221, 221, 221);
+    font-size: .95rem;
+    font-weight: 300;
+}
+
+#conversationContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 8px;
+}
+
+#conversationContainer>h2 {
+    color: white;
+    font-weight: 400;
+    font-size: 27px;
+}
+
+.conversations {
+    background-color: #1E272C;
+    max-width: 910px;
+    min-width: 700px;
+    height: 470px;
+    border-radius: 30px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-align: end;
+    padding-bottom: 40px;
+}
+
+#userAvatar-ms {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+.userProfile-ms {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.participantsOverride {
+    justify-content: start;
+}
+.time > p {
+    color: rgb(151, 151, 151);
+}
+
+.avatarContainer-ms {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.username-ms {
+    font-weight: bold;
+    font-size: 12px;
+    text-decoration: none;
+    color: white;
+}
+
+.userTag-ms {
+    font-weight: 300;
+    font-size: 12px;
+    text-decoration: none;
+    color: white;
+}
+
+.messages {
+    background-color: #1E3D4A;
+    max-width: 612px;
+    min-width: 500px;
+    min-height: 95px;
+    border-radius: 30px;
+    margin: 20px 20px;
+    overflow: hidden;
+    padding: 12px 16px;
+    box-shadow: 2px 5px 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+.messages > p {
+    color: rgb(221, 221, 221);
+    font-weight: 100;
+    font-size: .9rem;
+    padding-left: 50px;
+    padding-right: 8px;
+    padding-bottom: 5px;
+    text-align: left;
+    max-width: 100%;
+    word-break: break-all;
+}
+
+.time > p {
+    font-size: 0.7rem;
+}
+
+#newMessage > form > input[type=text] {
+    width: calc(100% + 30px);
+    position: absolute;
+    bottom: 5px;
+    padding: 12px 32px;
+    left: -15px;
+    border-radius: 30px;
+    background-color: var(--secondaryColor);
+    border: none;
+    color: white;
+    transition: all 0.3s;
+    outline: none;
+}
+
+#newMessage input[type=text]:focus {
+    border: 4px solid var(--bgColor);
+    width: 100%;
+    left: 0;
+}
+
+#participantContainer {
+    background-color: var(--tertiaryColor);
+    flex: 1;
+    max-width: 400px;
+    min-width: 400px;
+    height: 800px;
+    border-radius: 30px;
+    /* my code */
+    display: flex;
+    flex-direction: column;
+}
+
+#participantContainer > h2 {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    padding: 30px 30px;
+}
+
+.participants {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+
+.data {
+    background-color: #1A3541;
+    border-radius: 30px;
+    height: 100%;
+    width: 80%;
+    padding: 10px 15px;
+}
+
+.userStatus {
+    display: flex;
+    gap: 8px;
+}
+
+.userStatus > a:hover {
+    text-decoration: none !important;
+}
+
+.userStatus > a {
+    padding: 8px 16px;
+    background-color: var(--mainColor);
+    border-radius: 30px;
+}

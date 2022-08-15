@@ -15,12 +15,6 @@ main {
     justify-content: space-between;
 }
 
-a {
-    color: white;
-    text-decoration: none;
-}
-
-
 @media (max-width: 1200px) {
     body {
         height: max-content !important;
@@ -364,8 +358,9 @@ h3 {
 }
 
 .post > .content > p {
-    font-size: .7rem;
+    font-size: .6rem;
     padding-left: 12px;
+    word-break: break-all !important;
 }
   
 .userRepliedTo {
