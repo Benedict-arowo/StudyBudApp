@@ -15,7 +15,7 @@
                     
                     <div class="topic">
                         <a href="{% url 'index' %}" class="topicName">All</a>
-                        <button id="allBtn">{{roomCount}}</button>
+                        <button id="allBtn">{{allRooms.count}}</button>
                     </div>
 
                     {% for topic in topics %}
@@ -83,6 +83,8 @@
                             </div>
                         </div>
                     </div>
+                    {% empty %}
+                    <p style="color: white; text-align: center; font-size: 2rem;">No rooms in {{q}}</p>
                     {% endfor %}
 
                 </div>
@@ -102,6 +104,8 @@
                             <p class="activityMessageContent">{{post.message}}</p>
                         </div>
                     </div>
+                    {% empty %}
+                        <p style="color: white; text-align: center; font-size: 1.1rem;">No activites in {{q}}</p>
                     {% endfor %}
 
                 </div>

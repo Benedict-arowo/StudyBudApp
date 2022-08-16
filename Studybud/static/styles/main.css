@@ -216,7 +216,8 @@ h3 {
 #roomsSection > .container > .room {
     background-color: var(--tertiaryColor);
     border-radius: 30px;
-    height: 150px;
+    max-height: 180px;
+    min-height: 150px;
     padding: 8px 24px;
     display: flex;
     flex-direction: column;

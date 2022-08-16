@@ -97,7 +97,9 @@ nav {
 
 .userTag {
     font-weight: 300;
-    cursor: default;
+    cursor: pointer;
+    display: block;
+    font-size: .8rem !important;
 }
 
 .userDetails {

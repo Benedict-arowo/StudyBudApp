@@ -24,8 +24,11 @@
                     <p id="userBio">{{user.bio}}</p>
                 {% endif %}
                 <div id="btns">
-                    <a href="">Settings</a>
-                    <a href="">Follow</a>
+                    {% if request.user == user %}
+                        <a href="">Settings</a>
+                    {% else %}
+                        <a href="">Follow</a>
+                    {% endif %}
                 </div>
             </div>
 

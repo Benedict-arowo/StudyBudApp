@@ -13,14 +13,17 @@ def index(request):
     if not q:
         q = ''
     topics = Topic.objects.all()
+    allRooms = Room.objects.all()
     rooms = Room.objects.filter(Q(name__icontains=q) | Q(topic__name__icontains=q) | Q(host__username__icontains=q)).order_by('-updated')
     roomCount = rooms.count()
-    activities = Messages.objects.all().order_by("-created")[0:7]
+    activities = Messages.objects.filter(Q(room__topic__name__icontains=q) | Q(room__host__username__icontains=q)).order_by("-created")[0:7]
     context = {
         'rooms': rooms,
         'topics': topics,
         'roomCount': roomCount,
         'activities': activities,
+        'allRooms': allRooms,
+        'q': q,
     }
     return render(request, 'Base/index.html', context)
 

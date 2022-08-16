@@ -23,8 +23,8 @@
                     <img src="{{request.user.profile_picture.url}}" alt="user avatar" id="userAvatar" />
                 </div>
                 <div class="userDetails">
-                    <a href="" class="username">{{request.user.first_name}}</a>
-                    <span class="userTag">@{{request.user.username}}</span>
+                    <span class="username">{{request.user.first_name}}</>
+                    <a href="{% url 'profile' request.user.username %}" class="userTag">@{{request.user.username}}</a>
                 </div>
             </div>
             <img src="{% static 'images/drop-down.svg' %}" id="dropdown" alt="dropdown button">
