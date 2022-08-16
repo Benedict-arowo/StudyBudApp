@@ -188,3 +188,15 @@ def logoutPage(request):
     logout(request)
     return redirect('login')
 
+def profile(request, username):
+    user = User.objects.get(username=username)
+    rooms = Room.objects.filter(Q(host=user) | Q(participants=user)).order_by('-updated')
+    activities = Messages.objects.filter(user=user)
+    print(activities)
+
+    context = {
+        'user': user,
+        'rooms': rooms,
+        'activities': activities,
+    }
+    return render(request, 'Base/profile.html', context)

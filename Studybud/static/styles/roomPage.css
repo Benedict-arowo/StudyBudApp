@@ -140,6 +140,15 @@ body {
     padding-bottom: 40px;
 }
 
+.conversations::-webkit-scrollbar {
+    width: 4px;
+}
+
+.conversations::-webkit-scrollbar-thumb {
+    background-color: #84b9ce;
+    border-radius: 30px;
+}
+
 #userAvatar-ms {
     width: 100%;
     height: 100%;

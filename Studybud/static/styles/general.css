@@ -9,13 +9,15 @@ body {
     background-color: var(--bgColor);
 }
 
-.messages {
-    font-size: 1.3rem;
-    width: 100%;
-    text-align: center;
-    color: red;
+
+body::-webkit-scrollbar {
+    width: 8px;
 }
 
+body::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background-color: rgb(31, 48, 75) !important;
+}
 
 a {
     color: white;
@@ -47,6 +49,8 @@ a:hover {
     font-weight: 600;
     list-style-type: none;
 }
+
+
 
 :root {
     --mainColor: #0F2027;

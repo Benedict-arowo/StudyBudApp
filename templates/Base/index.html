@@ -61,7 +61,7 @@
                         <div class="roomHeading">
                             <div class="host">
                                 <img src="{{room.host.profile_picture.url}}" alt="Host profile picture">
-                                <a href="{% url 'index' %}"><strong>Host</strong> @{{room.host}}</a>
+                                <a href="{% url 'profile' room.host.username %}"><strong>Host</strong> @{{room.host}}</a>
                             </div>
                             <p class="timePosted">{{room.updated|timesince}}</p>
                         </div>
@@ -95,7 +95,7 @@
                     <div class="post">
                         <div class="host">
                             <img class="hostProfile" src="{{ post.user.profile_picture.url }}" alt="Host profile picture">
-                            <p><strong>Host</strong> @{{post.user}}</p>
+                            <p><strong>Host</strong> <a href="{% url 'profile' post.user.username%}">@{{post.user}}</a></p>
                         </div>
                         <div class="content">
                             <h6>Replied to <a href="{% url 'room' post.room.id %}" class="userRepliedTo">{{post.room.name}}<a/></h6>

@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <main>
+        <div class="container">
+            <div id="userInfo">
+                <img src="{{user.profile_picture.url}}" alt="User profile picture">
+                <p id="name">{{user.first_name}} {{user.last_name}}</p>
+                <a href="">@{{user.username}}</a>
+                <div id="userStats">
+                    <pre>Followers  {{user.followers.count}}</pre>
+                    <p>|</p>
+                    <pre>Following  {{user.following.count}}</pre>
+                </div>
+                {% if not user.bio %}
+                    <p id="userBio" style="font-weight: 600; font-size: 1.2rem;">No Bio</p>
+                {% else %}
+                    <p id="userBio">{{user.bio}}</p>
+                {% endif %}
+                <div id="btns">
+                    <a href="">Settings</a>
+                    <a href="">Follow</a>
+                </div>
+            </div>
+
+            <div id="userContent">
+                <div id="roomsSection">
+                    <div id="heading">
+                        <div id="titleContainer">
+                            <h3>Rooms "{{user.username}}" participates in</h3>
+                            <p>Currently displaying {{rooms.count}} {% if room.count > 1 %}
+                                rooms
+                                {% else %}
+                                room
+                                {% endif %}</p>
+                        </div>
+                    </div>
+                    <div class="container">
+                        {% for room in rooms %}
+                        <div class="room">
+                            <div class="roomHeading">
+                                <div class="host">
+                                    <img src="{{room.host.profile_picture.url}}" alt="Host profile picture">
+                                    <p><strong>Host</strong> @{{room.host.username}}</p>
+                                </div>
+                                <p class="timePosted">{{room.created|timesince}}</p>
+                            </div>
+                            <div class="roomContent">
+                                <h5 class="roomTitle"><a href="{% url 'room' room.id%}">{{room.name}}</a></h5>
+                                <p class="roomDesc">{{room.description}}</p>
+    
+                                <div class="roomStats">
+                                    <div class="joinedStats">
+                                        <div class="dotIcon"></div>
+                                        <p class="joined">{{room.participants.count}} joined</p>
+                                    </div>
+                                    <a href="{% url 'index' %}?q={{room.topic}}" class="roomTopic">{{room.topic}}</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+    
+                    </div>
+                </div>
+                <div id="activitySection">
+                    <h3>Activity</h3>
+                    <div class="activityContent">
+                        {% for post in activities %}
+                            <div class="post">
+                                <div class="host">
+                                    <img src="{{post.user.profile_picture.url}}" alt="Host profile picture">
+                                    <p><strong>Host</strong> @{{post.user.username}}</p>
+                                </div>
+                                <div class="content">
+                                    <h6>Replied to <span class="userRepliedTo">@{{post.room.name}}</span></h6>
+                                    <p>{{post.message}}</p>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <p style="color: white;">No activity yet.</p>
+                        {% endfor %}
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

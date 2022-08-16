@@ -1,0 +1,258 @@
+body {
+    min-height: 100vh;
+}
+
+main, main > .container {
+    height: 100%;
+}
+
+#userInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: white;
+    align-items: center;
+    padding: 8px 0;
+    height: max-content;
+}
+
+#userStats {
+    font-weight: 300;
+    font-size: .8rem;
+    display: flex;
+    gap: 8px;
+}
+
+#userInfo > #name {
+    color: #4486A3;
+    font-size: 1.2rem;
+}
+
+#userInfo > a {
+    font-size: .7rem;
+    color: #4486A3;
+}
+
+#userInfo > img { 
+    object-fit: cover;
+    border-radius: 50%;
+    width: 128px;
+    height: 128px;
+    border: 3px solid #0F2027;
+}
+
+#userBio {
+    text-align: center;
+    font-size: .9rem;
+    margin: 4px 0;
+    max-width: 700px;
+    color: rgb(213, 213, 213);
+}
+
+#btns {
+    width: max-content;
+    height: max-content;
+    margin-top: 8px;
+    display: flex;
+    gap: 16px;
+}
+
+#btns > a {
+    padding: 8px 32px;
+    border: 2px solid #4486A3;
+    border-radius: 30px;
+    color: #4486A3;
+    transition: all 0.3s;
+}
+
+#btns > a:hover {
+    transform: scale(1.1);
+}
+
+#userContent {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: 0 64px;
+}
+
+h3 {
+    color: white;
+    font-weight: 400;
+    text-align: center;
+}
+
+/* Room section */
+
+#roomsSection {
+    max-width: none;
+    flex: 3;
+    max-height: 80%;
+    padding: 16px 32px;
+    background-color: var(--bgColor);
+    position: relative;
+}
+
+#roomsSection > #heading {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: -20px;
+    background-color: var(--bgColor);
+    padding: 8px 16px;
+}
+
+
+#titleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+}
+
+#titleContainer > p {
+    font-weight: 300;
+}
+
+#roomsSection > .container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#roomsSection > .container > .room {
+    background-color: var(--tertiaryColor);
+    border-radius: 30px;
+    height: 150px;
+    padding: 8px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#roomsSection .roomHeading {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
+
+#roomsSection .roomHeading  p {
+    font-weight: 300;
+    font-size: .7rem;
+}
+
+#roomsSection .host, .post > .host {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+}
+
+#roomsSection .host > p , .post > .host > p{
+    font-size: .7rem;
+    font-weight: 300;
+}
+
+#roomsSection .roomHeading img, .post > .host > img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.roomContent {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 39px;
+}
+
+.roomContent .roomTitle {
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.roomContent .roomDesc {
+    font-size: .8rem;
+    font-weight: 100;
+    width: 80%;
+    cursor: default;
+}
+
+.roomStats {
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+}
+
+.roomStats .joined {
+    font-size: .7rem;
+    display: flex;
+}
+
+.dotIcon {
+    width: 8px;
+    height: 8px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+.joinedStats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.roomTopic {
+    font-size: .8rem;
+    padding: 8px 16px;
+    background-color: var(--mainColor);
+    border-radius: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.activityContent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 16px;
+}
+
+.activityContent > .post {
+    background-color: var(--mainColor);
+    padding: 16px;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: default;
+}
+
+.post > .content {
+    width: 100%;
+    border-radius: 15px;
+    background-color: var(--secondaryColor);
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#activitySection h3 {
+    position: sticky;
+    top: -20px;
+    padding: 16px 0;
+    background-color: var(--bgColor);
+    font-weight: 600;
+} 
+.post > .content > p {
+    font-size: .7rem;
+    padding-left: 12px;
+}
+  
+.userRepliedTo {
+    cursor: pointer;
+}

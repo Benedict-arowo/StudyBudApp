@@ -84,7 +84,7 @@
                             </div>
                             <div class="userDetails-ms">
                                 <span class="username-ms">{{user.first_name}} {{user.last_name}}</span>
-                                <a href="{% url 'room' room.id %}" class="userTag-ms">@{{user.username}}</a>
+                                <a href="{% url 'profile' user.username %}" class="userTag-ms">@{{user.username}}</a>
                             </div>
                         </div>
                     </div>
