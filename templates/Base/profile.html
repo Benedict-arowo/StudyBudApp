@@ -27,7 +27,11 @@
                     {% if request.user == user %}
                         <a href="">Settings</a>
                     {% else %}
-                        <a href="">Follow</a>
+                        {% if status %}
+                            <a href="{% url 'unfollow' user.username %}">Unfollow</a>
+                        {% else%}
+                            <a href="{% url 'follow' user.username %}">Follow</a>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
@@ -50,7 +54,7 @@
                             <div class="roomHeading">
                                 <div class="host">
                                     <img src="{{room.host.profile_picture.url}}" alt="Host profile picture">
-                                    <p><strong>Host</strong> @{{room.host.username}}</p>
+                                    <p><strong>Host</strong> <a href="{% url 'profile' room.host.username%}">@{{room.host.username}}</a></p>
                                 </div>
                                 <p class="timePosted">{{room.created|timesince}}</p>
                             </div>
@@ -78,10 +82,10 @@
                             <div class="post">
                                 <div class="host">
                                     <img src="{{post.user.profile_picture.url}}" alt="Host profile picture">
-                                    <p><strong>Host</strong> @{{post.user.username}}</p>
+                                    <p><strong>Host</strong> <a href="{% url 'profile' post.user.username%}">@{{post.user.username}}</a></p>
                                 </div>
                                 <div class="content">
-                                    <h6>Replied to <span class="userRepliedTo">@{{post.room.name}}</span></h6>
+                                    <h6>Replied to <a class="userRepliedTo">@{{post.room.name}}</a></h6>
                                     <p>{{post.message}}</p>
                                 </div>
                             </div>

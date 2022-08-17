@@ -52,7 +52,7 @@
                             {% endif %}</p>
                     </div>
                     {% if request.user.is_authenticated %}
-                    <button><a href="{% url 'create-room' %}">Create Room</a></button>
+                    <button><a id='create-room' href="{% url 'create-room' %}">Create Room</a></button>
                     {% endif %}
                 </div>
                 <div class="container">

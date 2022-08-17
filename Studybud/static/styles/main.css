@@ -99,6 +99,10 @@ main {
     max-height: 672px;
 }
 
+.topic a:hover, #activitySection a:hover, #create-room {
+    text-decoration: none;
+}
+
 #topicsSection {
     overflow: hidden;
 }

@@ -61,6 +61,43 @@ def room(request, id):
     return render(request, 'Base/room.html', context)
 
 @login_required(login_url='login')
+def follow(request, username):
+    currentUser = User.objects.get(username=username)
+    userFollowers = currentUser.followers.all()
+
+    if request.user == currentUser:
+        messages.error(request, 'You cant follow yourself!')
+        return redirect('profile', currentUser.username)
+
+    if request.user in userFollowers:
+        messages.error(request, f'You are already following {currentUser.username}.')
+        return redirect('profile', currentUser.username)
+
+    currentUser.followers.add(request.user)
+    request.user.following.add(currentUser)
+    messages.success(request, f'You are now following {currentUser.username}.')
+    return redirect('profile', currentUser.username)
+
+@login_required(login_url='login')
+def unfollow(request, username):
+    currentUser = User.objects.get(username=username)
+    userFollowers = currentUser.followers.all()
+
+    if request.user == currentUser:
+        messages.error(request, 'You cant unfollow yourself!')
+        return redirect('profile', currentUser.username)
+    
+    if not request.user in userFollowers:
+        messages.error(request, f'You are not following {currentUser.username}.')
+        return redirect('profile', currentUser.username)
+
+    currentUser.followers.remove(request.user)
+    request.user.following.remove(currentUser)
+    messages.success(request, f'You are no longer following {currentUser.username}.')
+    return redirect('profile', currentUser.username)
+    
+
+@login_required(login_url='login')
 def joinRoom(request, id):
     currentRoom = Room.objects.get(id=id)
 
@@ -90,7 +127,6 @@ def createRoom(request):
         room = RoomForm(request.POST)
         if room.is_valid():
             form = room.save(commit=False)
-            print(form.participants)
             form.host = request.user
             form.save()
             form.participants.add(request.user)
@@ -195,11 +231,13 @@ def profile(request, username):
     user = User.objects.get(username=username)
     rooms = Room.objects.filter(Q(host=user) | Q(participants=user)).order_by('-updated')
     activities = Messages.objects.filter(user=user)
-    print(activities)
+    userFollowers = user.followers.all()
+    status = request.user in userFollowers if True else False
 
     context = {
         'user': user,
         'rooms': rooms,
         'activities': activities,
+        'status': status,
     }
     return render(request, 'Base/profile.html', context)
